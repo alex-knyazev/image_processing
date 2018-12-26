@@ -1,25 +1,36 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+
 import './App.css';
+
+import Gradations from './components/Gradations';
+import Filters from './components/Filters';
+import FaceDetection from './components/FaceDetection';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <Router>
+          <div>
+            <nav>
+              <ul>
+                <li>
+                  <Link to="/grad">Gradations</Link>
+                </li>
+                <li>
+                  <Link to="/filters/">Filters</Link>
+                </li>
+                <li>
+                  <Link to="/face/">Face detection</Link>
+                </li>
+              </ul>
+            </nav>
+            <Route exact path="/grad" component={Gradations} />
+            <Route exact path="/filters" component={Filters} />
+            <Route exact path="/face" component={FaceDetection} />
+          </div>
+        </Router>
       </div>
     );
   }
